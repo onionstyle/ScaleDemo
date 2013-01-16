@@ -1,0 +1,34 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="ScaleDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <Grid x:Name="ShowClipGrid" Background="Wheat" Width="{Binding Path=ClipWidth}"  Height="{Binding Path=ClipHeight}"  Clip="{Binding Path=Clip}" Margin="{Binding Path=ClipMargin}" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"   >
+
+            <Image x:Name="ShowImage" RenderTransformOrigin="0.5,0.5" Margin="{Binding Path=Margin}"  Source="{Binding Path=Source}"  Width="{Binding Path=Width}" Height="{Binding Path=Height}"    ManipulationDelta="ShowImage_ManipulationDelta" ManipulationCompleted="ShowImage_ManipulationCompleted" HorizontalAlignment="Left" VerticalAlignment="Top"  >
+                <Image.RenderTransform>
+                    <CompositeTransform />
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="False" IsVisible="True">
+            <shell:ApplicationBarIconButton Click="Open_Click" IconUri="/Images/save.png" Text="open" />
+          </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>
